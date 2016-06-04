@@ -9,6 +9,8 @@ Just a few scripts I've created that others may find useful.
 
 **imap-unread-count.py** - Show count of unread messages via IMAP.
 
+**jsonvalid.py** - Validate JSON syntax.
+
 **localweb.sh** - Quick-launch script for dev web servers.
 
 **xmlformat.py** - Pretty formatting for XML files.
