@@ -11,6 +11,8 @@ Just a few scripts I've created that others may find useful.
 
 **localweb.sh** - Quick-launch script for dev web servers.
 
+**wget-all.sh** - Given a URL, recursively downloads all files for a website.
+
 **xmlformat.py** - Pretty formatting for XML files.
 
 **xmlvalid.py** - Validate XML syntax.
