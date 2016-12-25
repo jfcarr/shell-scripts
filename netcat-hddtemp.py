@@ -2,7 +2,7 @@
 
 import subprocess
 
-def GetInfo(address, port):
+def GetInfo(address, port, desiredScale = "C"):
 	allresults = []
 	driveInfo = {"Path": "", "Name": "", "Value": 0, "Scale": "C"}
 	callresult = subprocess.check_output(["netcat", address, port])
@@ -18,7 +18,7 @@ def GetInfo(address, port):
 		driveInfo["Value"] = diskparts[2]
 		driveInfo["Scale"] = diskparts[3]
 
-		if driveInfo["Scale"] == "C":
+		if driveInfo["Scale"] == "C" and desiredScale == "F":
 			driveInfo["Value"] = (float(driveInfo["Value"]) * (9/5)) + 32
 			driveInfo["Scale"] = "F"
 		
@@ -27,7 +27,7 @@ def GetInfo(address, port):
 		
 	return allresults
 
-allresults = GetInfo("localhost", "7634")
+allresults = GetInfo("localhost", "7634", "F")
 
 loopIteration = 0
 printResult = ""
