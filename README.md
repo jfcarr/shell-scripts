@@ -11,6 +11,8 @@ Just a few scripts I've created that others may find useful.
 
 **localweb.sh** - Quick-launch script for dev web servers.
 
+**netcat-hddtemp.py** - Parse info from hddtemp daemon via netcat and produce nicely formatted string of HDD temp info.
+
 **wget-all.sh** - Given a URL, recursively downloads all files for a website.
 
 **xmlformat.py** - Pretty formatting for XML files.
