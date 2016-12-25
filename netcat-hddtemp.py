@@ -4,6 +4,7 @@ import subprocess
 
 def GetInfo(address, port):
 	allresults = []
+	driveInfo = {"Path": "", "Name": "", "Value": 0, "Scale": "C"}
 	callresult = subprocess.check_output(["netcat", address, port])
 	callresult = callresult.decode("utf-8")  # convert byte array to string
 	disks = callresult.split("||")
@@ -12,16 +13,16 @@ def GetInfo(address, port):
 		diskparts = disk.split("|")
 		diskparts.remove("")
 		
-		drivePath = diskparts[0]
-		driveName = diskparts[1]
-		temperatureValue = diskparts[2]
-		temperatureScale = diskparts[3]
+		driveInfo["Path"] = diskparts[0]
+		driveInfo["Name"] = diskparts[1]
+		driveInfo["Value"] = diskparts[2]
+		driveInfo["Scale"] = diskparts[3]
+
+		if driveInfo["Scale"] == "C":
+			driveInfo["Value"] = (float(driveInfo["Value"]) * (9/5)) + 32
+			driveInfo["Scale"] = "F"
 		
-		if temperatureScale == "C":
-			temperatureValue = (float(temperatureValue) * (9/5)) + 32
-			temperatureScale = "F"
-		
-		formattedInfo = drivePath + " is " + str(temperatureValue) + " " + temperatureScale
+		formattedInfo = driveInfo["Path"] + " is " + str(driveInfo["Value"]) + " " + driveInfo["Scale"]
 		allresults.append(formattedInfo)
 		
 	return allresults
