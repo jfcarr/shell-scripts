@@ -11,13 +11,15 @@ class HDDTemp:
 	def GetInfo(self):
 		allresults = []
 		driveInfo = {"Path": "", "Name": "", "Value": 0, "Scale": "C"}
+		
+		# Sample input: |/dev/sda|WDC WD20EARX-00PASB0|34|C||/dev/sdb|WDC WD10EZEX-00BN5A0|33|C|
 		callresult = subprocess.check_output(["netcat", self.address, str(self.port)])
 		callresult = callresult.decode("utf-8")  # convert byte array to string
-		disks = callresult.split("||")
+		disks = callresult.split("||")  # split into one disk per line
 		
-		for disk in disks:
-			diskparts = disk.split("|")
-			diskparts.remove("")
+		for disk in disks:  
+			diskparts = disk.split("|")  # parse out the individual info for each disk
+			diskparts.remove("")  # remove any leading and/or trailing empty entries
 			
 			driveInfo["Path"] = diskparts[0]
 			driveInfo["Name"] = diskparts[1]
@@ -44,6 +46,7 @@ class HDDTemp:
 			printResult = printResult + tempResult
 			loopIteration = loopIteration + 1
 		
+		# Sample output: /dev/sda is 95.0 F, /dev/sdb is 91.4 F
 		print(printResult)
 
 if __name__ == '__main__':
