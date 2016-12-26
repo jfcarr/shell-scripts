@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import math
 import subprocess
 
 def GetInfo(address, port, desiredScale = "C"):
@@ -22,7 +23,7 @@ def GetInfo(address, port, desiredScale = "C"):
 			driveInfo["Value"] = (float(driveInfo["Value"]) * (9/5)) + 32
 			driveInfo["Scale"] = "F"
 		
-		formattedInfo = driveInfo["Path"] + " is " + str(driveInfo["Value"]) + " " + driveInfo["Scale"]
+		formattedInfo = driveInfo["Path"] + " is " + str(round(driveInfo["Value"], 1)) + " " + driveInfo["Scale"]
 		allresults.append(formattedInfo)
 		
 	return allresults
