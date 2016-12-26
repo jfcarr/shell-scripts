@@ -27,15 +27,19 @@ def GetInfo(address, port, desiredScale = "C"):
 		
 	return allresults
 
-allresults = GetInfo("localhost", "7634", "F")
-
-loopIteration = 0
-printResult = ""
-for tempResult in allresults:
-	if loopIteration > 0:
-		printResult = printResult + ", "
-	printResult = printResult + tempResult
-	loopIteration = loopIteration + 1
+if __name__ == '__main__':
+	try:
+		allresults = GetInfo("localhost", "7634", "F")
+		
+		loopIteration = 0
+		printResult = ""
+		for tempResult in allresults:
+			if loopIteration > 0:
+				printResult = printResult + ", "
+			printResult = printResult + tempResult
+			loopIteration = loopIteration + 1
+		
+		print(printResult)
 	
-print(printResult)
-	
+	except Exception as ex:
+		print ("[netcat-hddtemp ERROR] " + str(ex))
