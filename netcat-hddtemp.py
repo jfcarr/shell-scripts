@@ -37,18 +37,11 @@ class HDDTemp:
 	
 	def ShowInfo(self):
 		allresults = self.GetInfo()
-
-		loopIteration = 0
-		printResult = ""
-		for tempResult in allresults:
-			if loopIteration > 0:
-				printResult = printResult + ", "
-			printResult = printResult + tempResult
-			loopIteration = loopIteration + 1
 		
 		# Sample output: /dev/sda is 95.0 F, /dev/sdb is 91.4 F
-		print(printResult)
-
+		if allresults:
+			print(str.join(", ", allresults))
+		
 if __name__ == '__main__':
 	try:
 		myHDDTemp = HDDTemp("localhost", 7634, "F")
