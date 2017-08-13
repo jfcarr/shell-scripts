@@ -13,6 +13,8 @@ Just a few scripts I've created that others may find useful.
 
 **netcat-hddtemp.py** - Parse info from hddtemp daemon via netcat and produce nicely formatted string of HDD temp info.
 
+**ssctrl.sh** - Control utility script for SQL Server in Linux.
+
 **wget-all.sh** - Given a URL, recursively downloads all files for a website.
 
 **xmlformat.py** - Pretty formatting for XML files.
