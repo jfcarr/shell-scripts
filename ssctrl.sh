@@ -26,7 +26,7 @@ statusmsg(){
 }
 
 usage(){
-	echo "ssctrl - SQL Service control utility"
+	echo "ssctrl - SQL Server service control utility"
 	echo ""
 	echo "USAGE:"
 	echo ""
