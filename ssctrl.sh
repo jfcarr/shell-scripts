@@ -1,29 +1,26 @@
 #!/bin/bash
 
 statusmsg(){
-	if [ $1 == "status" ]; then
-		echo "Check status of SQL Server service"
-	fi
-
-	if [ $1 == "start" ]; then
-		echo "Start SQL Server service"
-	fi
-
-	if [ $1 == "stop" ]; then
-		echo "Stop SQL Server service"
-	fi
-
-	if [ $1 == "restart" ]; then
-		echo "Restart SQL Server service"
-	fi
-
-	if [ $1 == "disable" ]; then
-		echo "Disable SQL Server service"
-	fi
-
-	if [ $1 == "enable" ]; then
-		echo "Enable SQL Server service"
-	fi
+	case $1 in
+		status)
+			echo "Check status of SQL Server service"
+			;;
+		start)
+			echo "Start SQL Server service"
+			;;
+		stop)
+			echo "Stop SQL Server service"
+			;;
+		restart)
+			echo "Restart SQL Server service"
+			;;
+		disable)
+			echo "Disable SQL Server service"
+			;;
+		enable)
+			echo "Enable SQL Server service"
+			;;
+	esac
 
 	echo ""
 }
